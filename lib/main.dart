@@ -118,12 +118,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.green
-      ),
+      theme: ThemeData(primarySwatch: Colors.green),
       home: Scaffold(
         appBar: AppBar(
           title: Text('DemoApp'),
+        ),
+        body: Card(
+          child: Column(
+            children: <Widget>[
+              Image.asset('assets/chemistry.jpg'),
+              Text('Class Teaching')
+            ],
+          ),
         ),
       ),
     );
