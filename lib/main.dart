@@ -123,14 +123,20 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('DemoApp'),
         ),
-        body: Card(
-          child: Column(
-            children: <Widget>[
-              Image.asset('assets/chemistry.jpg'),
-              Text('Class Teaching')
-            ],
+        body: Column(children: [
+          RaisedButton(
+            onPressed: () {},
+            child: Text('Add Something'),
           ),
-        ),
+          Card(
+            child: Column(
+              children: <Widget>[
+                Image.asset('assets/chemistry.jpg'),
+                Text('Class Teaching')
+              ],
+            ),
+          )
+        ]),
       ),
     );
   }
