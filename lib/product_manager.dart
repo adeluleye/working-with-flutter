@@ -38,7 +38,10 @@ class _ProductManagerState extends State<ProductManager> {
           margin: const EdgeInsets.fromLTRB(2.0, 4.0, 2.0, 4.0),
           child: ProductControl(_addProduct),
         ),
-        Products(_products)
+        Container(
+          height: 500.0,
+          child: Products(_products),
+        )
       ],
     );
   }
