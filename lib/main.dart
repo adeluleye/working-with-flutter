@@ -137,8 +137,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('DemoApp'),
         ),
-        body: Column(children: [ProductManager(startingProduct: 'Robotics and AI')]),
-        //body: Column(children: [ProductManager()]),
+        //body: Column(children: [ProductManager(startingProduct: 'Robotics and AI')]),
+        body: Column(children: [ProductManager()]),
       ),
     );
   }
