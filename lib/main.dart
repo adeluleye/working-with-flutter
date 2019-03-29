@@ -112,51 +112,24 @@
 
 import 'package:flutter/material.dart';
 
+import './product_manager.dart';
+
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyAppState();
-  }
-}
-
-class _MyAppState extends State {
-  List<String> _products = ['Teaching'];
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.green, 
+        accentColor: Colors.deepOrange
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('DemoApp'),
         ),
-        body: Column(children: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(2.0, 4.0, 2.0, 4.0),
-            child: RaisedButton(
-              onPressed: () {
-                setState(() {
-                  _products.add('Vocational Teaching');
-                });
-              },
-              child: Text('Add Something'),
-            ),
-          ),
-          Column(
-            children: _products
-                .map((element) => Card(
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('assets/chemistry.jpg'),
-                          Text(element)
-                        ],
-                      ),
-                    ))
-                .toList(),
-          )
-        ]),
+        body: Column(children: [ProductManager('Teaching')]),
       ),
     );
   }
