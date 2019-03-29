@@ -124,9 +124,12 @@ class MyApp extends StatelessWidget {
           title: Text('DemoApp'),
         ),
         body: Column(children: [
-          RaisedButton(
-            onPressed: () {},
-            child: Text('Add Something'),
+          Container(
+            margin: const EdgeInsets.fromLTRB(2.0, 4.0, 2.0, 4.0),
+            child: RaisedButton(
+              onPressed: () {},
+              child: Text('Add Something'),
+            ),
           ),
           Card(
             child: Column(
