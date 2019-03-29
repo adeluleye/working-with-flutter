@@ -117,12 +117,13 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
 
 class _MyAppState extends State {
+  List<String> _products = ['Teaching'];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -135,21 +136,28 @@ class _MyAppState extends State {
           Container(
             margin: const EdgeInsets.fromLTRB(2.0, 4.0, 2.0, 4.0),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _products.add('Vocational Teaching');
+                });
+              },
               child: Text('Add Something'),
             ),
           ),
-          Card(
-            child: Column(
-              children: <Widget>[
-                Image.asset('assets/chemistry.jpg'),
-                Text('Class Teaching')
-              ],
-            ),
+          Column(
+            children: _products
+                .map((element) => Card(
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset('assets/chemistry.jpg'),
+                          Text(element)
+                        ],
+                      ),
+                    ))
+                .toList(),
           )
         ]),
       ),
     );
   }
-  
 }
