@@ -113,7 +113,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 
-import './product_manager.dart';
+import './pages/home.dart';
 
 // void main() => runApp(MyApp());
 void main() {
@@ -133,13 +133,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green, 
         accentColor: Colors.deepOrange
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('DemoApp'),
-        ),
-        //body: Column(children: [ProductManager(startingProduct: 'Robotics and AI')]),
-        body: Column(children: [ProductManager()]),
-      ),
+      home: HomePage()
     );
   }
 }

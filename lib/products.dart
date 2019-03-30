@@ -17,14 +17,14 @@ class Products extends StatelessWidget {
   }
 
   Widget _buildProductList() {
-    Widget productCard = Center(child: Text('No product available at the moment'),);
+    Widget productCards = Center(child: Text('No product available at the moment'),);
     if (products.length > 0) {
-      productCard = ListView.builder(
+      productCards = ListView.builder(
         itemBuilder: _buildProductItem,
         itemCount: products.length,
       );
     }
-    return productCard;
+    return productCards;
   }
 
   @override
