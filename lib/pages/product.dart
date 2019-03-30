@@ -8,17 +8,28 @@ class ProductPage extends StatelessWidget {
           title: Text('Product Detail'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: Text(
-                'Details!',
-                textAlign: TextAlign.center,
-              ),
+            Image.asset('assets/chemistry.jpg'),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Text('Details!'),
             ),
-            RaisedButton(
-              child: Text('BACK'),
-              onPressed: () => Navigator.pop(context),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: RaisedButton(
+                color: Colors.deepPurple,
+                child: Text(
+                  'BACK',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+                onPressed: () => Navigator.pop(context),
+              ),
             )
           ],
         ));
