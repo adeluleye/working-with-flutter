@@ -13,7 +13,6 @@ class ProductPage extends StatelessWidget {
           title: Text(title),
         ),
         body: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Image.asset(imageUrl),
@@ -26,14 +25,14 @@ class ProductPage extends StatelessWidget {
               child: RaisedButton(
                 color: Colors.deepPurple,
                 child: Text(
-                  'BACK',
+                  'DELETE',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
                     fontWeight: FontWeight.bold
                   ),
                 ),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.pop(context, true),
               ),
             )
           ],

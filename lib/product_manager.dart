@@ -32,6 +32,12 @@ class _ProductManagerState extends State<ProductManager> {
     //print(_products);
   }
 
+  void _deleteProduct(int index) {
+    setState(() {
+      _products.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,7 +48,7 @@ class _ProductManagerState extends State<ProductManager> {
         ),
         Container(
           height: 700.0,
-          child: Products(_products),
+          child: Products(_products, deleteProduct: _deleteProduct),
         )
       ],
     );
