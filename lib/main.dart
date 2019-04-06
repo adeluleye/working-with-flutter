@@ -114,6 +114,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 
 import './pages/auth.dart';
+import './pages/products_admin.dart';
+import './pages/products.dart';
 
 // void main() => runApp(MyApp());
 void main() {
@@ -129,11 +131,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //debugShowMaterialGrid: true,
       theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.green, 
-        accentColor: Colors.deepOrange
-      ),
+          brightness: Brightness.light,
+          primarySwatch: Colors.green,
+          accentColor: Colors.deepOrange),
       home: AuthPage(),
+      routes: {
+        '/products': (BuildContext context) => ProductsPage(),
+        '/admin': (BuildContext context) => ProductsAdminPage(),
+      },
     );
   }
 }

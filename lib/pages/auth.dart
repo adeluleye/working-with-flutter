@@ -14,11 +14,7 @@ class AuthPage extends StatelessWidget {
           color: Colors.deepOrange,
           child: Text('Authenticate'),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => ProductsPage()),
-            );
+            Navigator.pushReplacementNamed(context, '/products');
           },
         ),
       ),
