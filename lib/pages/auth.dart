@@ -58,7 +58,7 @@ class _AuthPageState extends State<AuthPage> {
               textColor: Colors.white,
               child: Text('Authenticate'),
               onPressed: () {
-                print(this._emailValue + ':' + this._passwordValue);
+                //print(this._emailValue + ':' + this._passwordValue);
                 Navigator.pushReplacementNamed(context, '/products');
               },
             )

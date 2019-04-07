@@ -154,14 +154,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       //debugShowMaterialGrid: true,
       theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.green,
-          accentColor: Colors.deepOrange),
+        brightness: Brightness.light,
+        primarySwatch: Colors.green,
+        accentColor: Colors.deepOrange,
+        fontFamily: 'Lato'
+      ),
       home: AuthPage(),
       routes: {
-        '/products': (BuildContext context) =>
-            ProductsPage(_products),
-        '/admin': (BuildContext context) => ProductsAdminPage(_addProduct, _deleteProduct),
+        '/products': (BuildContext context) => ProductsPage(_products),
+        '/admin': (BuildContext context) =>
+            ProductsAdminPage(_addProduct, _deleteProduct),
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');
@@ -179,8 +181,7 @@ class _MyAppState extends State<MyApp> {
       },
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute(
-          builder: (BuildContext context) =>
-              ProductsPage(_products),
+          builder: (BuildContext context) => ProductsPage(_products),
         );
       },
     );
