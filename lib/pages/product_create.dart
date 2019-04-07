@@ -55,7 +55,40 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
     );
   }
 
-  void _submitForm() {
+  Widget _buildSizedBox() {
+    return SizedBox(
+      height: 10.0,
+    );
+  }
+
+  Widget _buildSaveButton() {
+    return RaisedButton(
+      color: Colors.deepOrange,
+      textColor: Colors.black,
+      child: Text(
+        'Save',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+        ),
+      ),
+      onPressed: _submitPressed,
+    );
+  }
+
+  Widget _buildListView() {
+    return ListView(
+      children: <Widget>[
+        _buildTitleTextField(),
+        _buildDescriptionTextField(),
+        _buildPriceTextField(),
+        _buildSizedBox(),
+        _buildSaveButton()
+      ],
+    );
+  }
+
+  void _submitPressed() {
     final Map<String, dynamic> product = {
       'title': _titleValue,
       'description': _descriptionValue,
@@ -70,28 +103,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-      child: ListView(
-        children: <Widget>[
-          _buildTitleTextField(),
-          _buildDescriptionTextField(),
-          _buildPriceTextField(),
-          SizedBox(
-            height: 10.0,
-          ),
-          RaisedButton(
-            color: Colors.deepOrange,
-            textColor: Colors.black,
-            child: Text(
-              'Save',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-              ),
-            ),
-            onPressed: _submitForm,
-          )
-        ],
-      ),
+      child: _buildListView(),
     );
   }
 }
