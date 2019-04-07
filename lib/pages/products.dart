@@ -29,10 +29,15 @@ class ProductsPage extends StatelessWidget {
       ),
       appBar: AppBar(
         title: Text('DemoApp'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {},
+          )
+        ],
       ),
       //body: Column(children: [ProductManager(startingProduct: 'Robotics and AI')]),
-      body: Column(
-          children: [ProductManager(products)]),
+      body: Column(children: [ProductManager(products)]),
     );
   }
 }
