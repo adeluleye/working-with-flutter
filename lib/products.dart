@@ -35,7 +35,7 @@ class Products extends StatelessWidget {
                     '\$' + products[index]['price'].toString(),
                     style: TextStyle(color: Colors.white),
                   ),
-                )
+                ),
               ],
             ),
           ),
