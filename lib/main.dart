@@ -42,10 +42,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       //debugShowMaterialGrid: true,
       theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.green,
-          accentColor: Colors.deepOrange,
-          fontFamily: 'Lato'),
+        brightness: Brightness.light,
+        primarySwatch: Colors.green,
+        accentColor: Colors.deepOrange,
+        fontFamily: 'Lato',
+        buttonColor: Colors.deepPurple,
+      ),
       home: AuthPage(),
       routes: {
         '/products': (BuildContext context) => ProductsPage(_products),

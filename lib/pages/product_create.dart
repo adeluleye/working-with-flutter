@@ -63,7 +63,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
 
   Widget _buildSaveButton() {
     return RaisedButton(
-      color: Colors.deepOrange,
+      //color: Colors.deepOrange,
       textColor: Colors.black,
       child: Text(
         'Save',
@@ -73,6 +73,17 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
         ),
       ),
       onPressed: _submitPressed,
+    );
+  }
+
+  Widget _buildGestureDetector() {
+    return GestureDetector(
+      onTap: _submitPressed,
+      child: Container(
+        color: Colors.green,
+        padding: EdgeInsets.all(5.0),
+        child: Text('My Button'),
+      ),
     );
   }
 
@@ -87,7 +98,8 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
         _buildDescriptionTextField(),
         _buildPriceTextField(),
         _buildSizedBox(),
-        _buildSaveButton()
+        //_buildSaveButton()
+        _buildGestureDetector(),
       ],
     );
   }
