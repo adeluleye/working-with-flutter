@@ -42,11 +42,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       //debugShowMaterialGrid: true,
       theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.green,
-        accentColor: Colors.deepOrange,
-        fontFamily: 'Lato'
-      ),
+          brightness: Brightness.light,
+          primarySwatch: Colors.green,
+          accentColor: Colors.deepOrange,
+          fontFamily: 'Lato'),
       home: AuthPage(),
       routes: {
         '/products': (BuildContext context) => ProductsPage(_products),
@@ -62,7 +61,11 @@ class _MyAppState extends State<MyApp> {
           final int index = int.parse(pathElements[2]);
           return MaterialPageRoute<bool>(
             builder: (BuildContext context) => ProductPage(
-                _products[index]['title'], _products[index]['image']),
+                  _products[index]['title'],
+                  _products[index]['image'],
+                  _products[index]['price'],
+                  _products[index]['description'],
+                ),
           );
         }
         return null;

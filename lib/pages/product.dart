@@ -4,8 +4,15 @@ import 'dart:async';
 class ProductPage extends StatelessWidget {
   final String title;
   final String imageUrl;
+  final double price;
+  final String description;
 
-  ProductPage(this.title, this.imageUrl);
+  ProductPage(
+    this.title,
+    this.imageUrl,
+    this.price,
+    this.description,
+  );
 
   _showWarningDialog(BuildContext context) {
     showDialog(
@@ -52,20 +59,51 @@ class ProductPage extends StatelessWidget {
                 Image.asset(imageUrl),
                 Container(
                   padding: EdgeInsets.all(10.0),
-                  child: Text(title),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Lagos, Nigera',
+                      style: TextStyle(
+                        fontFamily: 'Lato',
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                      child: Text(
+                        '|',
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '\$' + price.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Lato',
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
-                  padding: EdgeInsets.all(10.0),
-                  child: RaisedButton(
-                    color: Colors.deepPurple,
-                    child: Text(
-                      'DELETE',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () => _showWarningDialog(context),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                    vertical: 10.0,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    description,
+                    textAlign: TextAlign.center,
                   ),
                 )
               ],
