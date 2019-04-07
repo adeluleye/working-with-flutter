@@ -16,42 +16,65 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
   String _descriptionValue = '';
   double _priceValue = 0.0;
 
+  Widget _buildTitleTextField() {
+    return TextField(
+      decoration: InputDecoration(
+        labelText: 'Product Title',
+      ),
+      onChanged: (String value) {
+        setState(() {
+          _titleValue = value;
+        });
+      },
+    );
+  }
+
+  Widget _buildDescriptionTextField() {
+    return TextField(
+      decoration: InputDecoration(labelText: 'Product Description'),
+      maxLines: 3,
+      onChanged: (String value) {
+        setState(() {
+          _descriptionValue = value;
+        });
+      },
+    );
+  }
+
+  Widget _buildPriceTextField() {
+    return TextField(
+      decoration: InputDecoration(labelText: 'Product Price'),
+      keyboardType: TextInputType.numberWithOptions(
+        decimal: true,
+      ),
+      onChanged: (String value) {
+        setState(() {
+          _priceValue = double.parse(value);
+        });
+      },
+    );
+  }
+
+  void _submitForm() {
+    final Map<String, dynamic> product = {
+      'title': _titleValue,
+      'description': _descriptionValue,
+      'price': _priceValue,
+      'image': 'assets/chemistry.jpg'
+    };
+    widget.addProduct(product);
+    Navigator.pushReplacementNamed(context, '/products');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: ListView(
         children: <Widget>[
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Product Title',
-            ),
-            onChanged: (String value) {
-              setState(() {
-                _titleValue = value;
-              });
-            },
-          ),
-          TextField(
-            decoration: InputDecoration(labelText: 'Product Description'),
-            maxLines: 3,
-            onChanged: (String value) {
-              setState(() {
-                _descriptionValue = value;
-              });
-            },
-          ),
-          TextField(
-            decoration: InputDecoration(labelText: 'Product Price'),
-            keyboardType: TextInputType.numberWithOptions(
-              decimal: true,
-            ),
-            onChanged: (String value) {
-              setState(() {
-                _priceValue = double.parse(value);
-              });
-            },
-          ),
+          _buildTitleTextField(),
+          _buildDescriptionTextField(),
+          _buildPriceTextField(),
           SizedBox(
             height: 10.0,
           ),
@@ -65,16 +88,7 @@ class _ProductCreatePageState extends State<ProductCreatePage> {
                 fontSize: 14,
               ),
             ),
-            onPressed: () {
-              final Map<String, dynamic> product = {
-                'title': _titleValue,
-                'description': _descriptionValue,
-                'price': _priceValue,
-                'image': 'assets/chemistry.jpg'
-              };
-              widget.addProduct(product);
-              Navigator.pushReplacementNamed(context, '/products');
-            },
+            onPressed: _submitForm,
           )
         ],
       ),
