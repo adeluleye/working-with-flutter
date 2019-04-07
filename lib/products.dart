@@ -32,12 +32,20 @@ class Products extends StatelessWidget {
                       color: Theme.of(context).accentColor,
                       borderRadius: BorderRadius.circular(5.0)),
                   child: Text(
-                    '\$'+products[index]['price'].toString(),
+                    '\$' + products[index]['price'].toString(),
                     style: TextStyle(color: Colors.white),
                   ),
                 )
               ],
             ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 5.0),
+            padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1.0),
+                borderRadius: BorderRadius.circular(6.0)),
+            child: Text('Lagos, Nigeria'),
           ),
           ButtonBar(
             alignment: MainAxisAlignment.center,
