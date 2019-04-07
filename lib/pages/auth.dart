@@ -79,16 +79,21 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   Widget _buildSingleChildScrollView() {
+    final double deviceWidth = MediaQuery.of(context).size.width;
+    final double targetWidth = deviceWidth > 828.0 ? 500.0 : deviceWidth * 0.95;
     return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          _buildEmailTextField(),
-          _buildSizedBox(),
-          _buildPasswordTextField(),
-          _buildAcceptTermsSwitch(),
-          _buildSizedBox(),
-          _buildLoginButton()
-        ],
+      child: Container(
+        width: targetWidth,
+        child: Column(
+          children: <Widget>[
+            _buildEmailTextField(),
+            _buildSizedBox(),
+            _buildPasswordTextField(),
+            _buildAcceptTermsSwitch(),
+            _buildSizedBox(),
+            _buildLoginButton()
+          ],
+        ),
       ),
     );
   }
