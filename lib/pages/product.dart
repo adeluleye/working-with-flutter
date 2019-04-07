@@ -43,66 +43,84 @@ class ProductPage extends StatelessWidget {
     );
   }
 
+  Widget _buildAddressAndPriceRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          'Lagos, Nigera',
+          style: TextStyle(
+            fontFamily: 'Lato',
+            color: Colors.grey,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 5.0, right: 5.0),
+          child: Text(
+            '|',
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+        ),
+        Text(
+          '\$' + price.toString(),
+          style: TextStyle(
+            fontFamily: 'Lato',
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDescriptionContainer() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 10.0,
+        vertical: 10.0,
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        description,
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildTitleContainer() {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      child: TitleDefault(title),
+    );
+  }
+
+  Widget _buildPageBodyColumn() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(imageUrl),
+        _buildTitleContainer(),
+        _buildAddressAndPriceRow(),
+        _buildDescriptionContainer(),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () {
-          print('Back button pressed');
-          Navigator.pop(context, false);
-          return Future.value(false);
-        },
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text(title),
-            ),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(imageUrl),
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  child: TitleDefault(title),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Lagos, Nigera',
-                      style: TextStyle(
-                        fontFamily: 'Lato',
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                      child: Text(
-                        '|',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      '\$' + price.toString(),
-                      style: TextStyle(
-                        fontFamily: 'Lato',
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                    vertical: 10.0,
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    description,
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
-            )));
+      onWillPop: () {
+        print('Back button pressed');
+        Navigator.pop(context, false);
+        return Future.value(false);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: _buildPageBodyColumn(),
+      ),
+    );
   }
 }
