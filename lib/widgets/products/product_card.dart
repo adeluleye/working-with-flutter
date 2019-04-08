@@ -4,8 +4,10 @@ import './price_tag.dart';
 import './address_tag.dart';
 import '../ui_elements/title_default.dart';
 
+import '../../models/product.dart';
+
 class ProductCard extends StatelessWidget {
-  final Map<String, dynamic> product;
+  final Product product;
   final int productIndex;
 
   ProductCard(this.product, this.productIndex);
@@ -17,12 +19,12 @@ class ProductCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           TitleDefault(
-            product['title'],
+            product.title,
           ),
           SizedBox(
             width: 8.0,
           ),
-          PriceTag(product['price'].toString())
+          PriceTag(product.price.toString())
         ],
       ),
     );
@@ -53,7 +55,7 @@ class ProductCard extends StatelessWidget {
   Widget _buildCardColumn(BuildContext context) {
     return Column(
       children: <Widget>[
-        Image.asset(product['image']),
+        Image.asset(product.image),
         _buildTitleAndPriceContainer(),
         AddressTag('Lagos, Nigeria'),
         _buildButtonBar(context)
