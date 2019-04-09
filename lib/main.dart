@@ -7,8 +7,7 @@ import './pages/products_admin.dart';
 import './pages/products.dart';
 import './pages/product.dart';
 
-import './models/product.dart';
-import './scoped-models/products.dart';
+import './scoped-models/main.dart';
 
 // void main() => runApp(MyApp());
 void main() {
@@ -28,8 +27,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<ProductsModel>(
-      model: ProductsModel(),
+    return ScopedModel<MainModel>(
+      model: MainModel(),
       child: MaterialApp(
         //debugShowMaterialGrid: true,
         theme: ThemeData(
@@ -43,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         routes: {
           '/products': (BuildContext context) => ProductsPage(),
           '/admin': (BuildContext context) =>
-              ProductsAdminPage(null, null, null, null),
+              ProductsAdminPage(),
         },
         onGenerateRoute: (RouteSettings settings) {
           final List<String> pathElements = settings.name.split('/');
