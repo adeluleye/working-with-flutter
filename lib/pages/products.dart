@@ -4,7 +4,24 @@ import 'package:scoped_model/scoped_model.dart';
 import '../widgets/products/products.dart';
 import '../scoped-models/main.dart';
 
-class ProductsPage extends StatelessWidget {
+class ProductsPage extends StatefulWidget {
+  final MainModel model;
+
+  ProductsPage(this.model);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _ProductsPageState();
+  }
+}
+
+class _ProductsPageState extends State<ProductsPage> {
+  @override
+  initState() {
+    super.initState();
+    widget.model.fetchProducts();
+  }
+
   Widget _buildSideDrawer(BuildContext context) {
     return Drawer(
       child: Column(
@@ -36,7 +53,9 @@ class ProductsPage extends StatelessWidget {
             builder: (BuildContext context, Widget child, MainModel model) {
               return IconButton(
                 icon: Icon(
-                  model.displayFavoritesOnly ? Icons.favorite : Icons.favorite_border,
+                  model.displayFavoritesOnly
+                      ? Icons.favorite
+                      : Icons.favorite_border,
                 ),
                 onPressed: () {
                   model.toggleDisplayMode();

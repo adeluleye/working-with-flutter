@@ -69,7 +69,7 @@ class ProductCard extends StatelessWidget {
   Widget _buildCardColumn(BuildContext context) {
     return Column(
       children: <Widget>[
-        Image.asset(product.image),
+        Image.network(product.image),
         _buildTitleAndPriceContainer(),
         AddressTag('Lagos, Nigeria'),
         Text(product.userEmail),
