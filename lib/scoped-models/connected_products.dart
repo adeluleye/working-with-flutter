@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:scoped_model/scoped_model.dart';
+import 'package:http/http.dart' as http;
 
 import '../models/product.dart';
 import '../models/user.dart';
 
 mixin ConnectedProductsModel on Model {
+  String url = 'https://flutter-demo-f563a.firebaseio.com/products.json';
+
   List<Product> _products = [];
   int _selProductIndex;
   User _authenticatedUser;
@@ -14,15 +19,29 @@ mixin ConnectedProductsModel on Model {
     String image,
     double price,
   ) {
-    final Product newProduct = Product(
-        title: title,
-        description: description,
-        image: image,
-        price: price,
-        userEmail: _authenticatedUser.email,
-        userId: _authenticatedUser.id);
-    _products.add(newProduct);
-    notifyListeners();
+    final Map<String, dynamic> productData = {
+      'title': title,
+      'description': description,
+      'image':
+          'https://images-na.ssl-images-amazon.com/images/I/81JOaXYvi9L._SY450_.jpg',
+      'price': price
+    };
+    http
+        .post(url, body: json.encode(productData))
+        .then((http.Response response) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      //print(responseData);
+      final Product newProduct = Product(
+          id: responseData['name'],
+          title: title,
+          description: description,
+          image: image,
+          price: price,
+          userEmail: _authenticatedUser.email,
+          userId: _authenticatedUser.id);
+      _products.add(newProduct);
+      notifyListeners();
+    });
   }
 }
 
