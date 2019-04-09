@@ -72,6 +72,7 @@ class ProductCard extends StatelessWidget {
         Image.asset(product.image),
         _buildTitleAndPriceContainer(),
         AddressTag('Lagos, Nigeria'),
+        Text(product.userEmail),
         _buildButtonBar(context)
       ],
     );

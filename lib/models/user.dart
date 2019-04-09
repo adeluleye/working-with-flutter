@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class User {
-  final int id;
+  final String id;
   final String email;
   final String password;
 
