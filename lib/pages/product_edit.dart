@@ -96,30 +96,34 @@ class _ProductEditPageState extends State<ProductEditPage> {
     );
   }
 
-  Widget _buildSaveButton() {
+  Widget _buildSubmitButton() {
     return ScopedModelDescendant<MainModel>(
       builder: (
         BuildContext context,
         Widget child,
         MainModel model,
       ) {
-        return RaisedButton(
-          //color: Colors.deepOrange,
-          textColor: Colors.black,
-          child: Text(
-            'Save',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
-          ),
-          onPressed: () => _submitForm(
-                model.addProduct,
-                model.updateProduct,
-                model.selectProduct,
-                model.selectedProductIndex,
-              ),
-        );
+        return model.isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : RaisedButton(
+                //color: Colors.deepOrange,
+                textColor: Colors.black,
+                child: Text(
+                  'Save',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                onPressed: () => _submitForm(
+                      model.addProduct,
+                      model.updateProduct,
+                      model.selectProduct,
+                      model.selectedProductIndex,
+                    ),
+              );
       },
     );
   }
@@ -135,7 +139,7 @@ class _ProductEditPageState extends State<ProductEditPage> {
         _buildDescriptionTextField(product),
         _buildPriceTextField(product),
         _buildSizedBox(),
-        _buildSaveButton()
+        _buildSubmitButton()
         //_buildGestureDetector(),
       ],
     );
@@ -154,7 +158,8 @@ class _ProductEditPageState extends State<ProductEditPage> {
         _formData['description'],
         _formData['image'],
         _formData['price'],
-      );
+      ).then((_) => Navigator.pushReplacementNamed(context, '/products')
+          .then((_) => setSelectedProduct(null)));
     } else {
       updateProduct(
         _formData['title'],
@@ -163,8 +168,6 @@ class _ProductEditPageState extends State<ProductEditPage> {
         _formData['price'],
       );
     }
-    Navigator.pushReplacementNamed(context, '/products')
-        .then((_) => setSelectedProduct(null));
   }
 
   Widget _buildPageContent(BuildContext context, Product product) {
