@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         routes: {
           '/products': (BuildContext context) => ProductsPage(model),
           '/admin': (BuildContext context) =>
-              ProductsAdminPage(),
+              ProductsAdminPage(model),
         },
         onGenerateRoute: (RouteSettings settings) {
           final List<String> pathElements = settings.name.split('/');
